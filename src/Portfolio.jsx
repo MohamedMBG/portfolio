@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, Instagram, Upload, X, ExternalLink, Code, Palette, Smartphone, Star, Calendar, Award, User, Briefcase, Send } from 'lucide-react';
+import { motion } from "framer-motion";
 
 const FreelancerPortfolio = () => {
   const [currentSection, setCurrentSection] = useState('hero');
@@ -177,131 +178,136 @@ const FreelancerPortfolio = () => {
                 Baghdad Mohamed
               </span>
             </div>
-            <div className="hidden md:flex space-x-8">
-              {['Hero', 'About', 'Skills', 'Portfolio', 'Contact'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-all duration-300 hover:text-orange-400 ${
-                    currentSection === item.toLowerCase() ? 'text-orange-400' : 'text-white/80'
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
+            <div className="flex gap-8">
+              <button
+                className={`text-white/80 hover:text-orange-400 font-semibold transition-colors ${currentSection === 'hero' ? 'text-orange-400' : ''}`}
+                onClick={() => scrollToSection('hero')}
+              >
+                Home
+              </button>
+              <button
+                className={`text-white/80 hover:text-orange-400 font-semibold transition-colors ${currentSection === 'about' ? 'text-orange-400' : ''}`}
+                onClick={() => scrollToSection('about')}
+              >
+                About
+              </button>
+              <button
+                className={`text-white/80 hover:text-orange-400 font-semibold transition-colors ${currentSection === 'skills' ? 'text-orange-400' : ''}`}
+                onClick={() => scrollToSection('skills')}
+              >
+                Skills
+              </button>
+              <button
+                className={`text-white/80 hover:text-orange-400 font-semibold transition-colors ${currentSection === 'portfolio' ? 'text-orange-400' : ''}`}
+                onClick={() => scrollToSection('portfolio')}
+              >
+                Portfolio
+              </button>
+              <button
+                className={`text-white/80 hover:text-orange-400 font-semibold transition-colors ${currentSection === 'contact' ? 'text-orange-400' : ''}`}
+                onClick={() => scrollToSection('contact')}
+              >
+                Contact
+              </button>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/20 to-blue-900/30"></div>
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="animate-fadeInUp">
-            <div className="mb-8">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange-500 to-blue-900 flex items-center justify-center text-4xl font-bold text-white shadow-2xl animate-pulse">
-                BM
-              </div>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-                Baghdad Mohamed
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-orange-200 mb-4">
-              Android Developer & Brand Designer
-            </p>
-            <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-              21 years old • 3 years experience in Android Development • 3 years experience in Branding & Design
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => scrollToSection('portfolio')}
-                className="px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                View My Work
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 border-2 border-orange-400 text-orange-400 rounded-full font-semibold hover:bg-orange-400 hover:text-white transition-all duration-300"
-              >
-                Get In Touch
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-white/60" />
+      <section id="hero" className="pt-32 pb-20 text-center bg-gradient-to-b from-black via-slate-900 to-transparent">
+        <div className="container mx-auto px-6">
+          <motion.h1
+            className="text-5xl md:text-6xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Hi, I'm <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Baghdad Mohamed</span>
+          </motion.h1>
+          <p className="text-xl md:text-2xl text-white/80 mb-8">
+            Android Developer & Brand Designer
+          </p>
+          <button
+            onClick={() => scrollToSection('portfolio')}
+            className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2 mx-auto"
+          >
+            <ChevronDown className="w-5 h-5 animate-bounce" />
+            View My Work
+          </button>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-slate-900/50 backdrop-blur-sm">
+      <motion.section
+        id="about"
+        className="py-20 bg-slate-900/50 backdrop-blur-sm"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto mb-8"></div>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              I'm a passionate Android developer and creative brand designer with a knack for building beautiful, functional apps and visual identities. I love turning ideas into reality and helping businesses stand out.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-white/90 space-y-6">
-              <div className="flex items-center gap-3 mb-4">
-                <User className="w-5 h-5 text-orange-400" />
-                <span className="text-orange-400 font-semibold">Personal Info</span>
-              </div>
-              <p className="text-lg leading-relaxed">
-                I'm Baghdad Mohamed, a passionate 21-year-old developer and designer with 3 years of experience 
-                in Android development and branding. I specialize in creating beautiful, functional mobile 
-                applications and compelling brand identities that leave lasting impressions.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-orange-400" />
-                  <span>Age: 21</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-orange-400" />
-                  <span>Experience: 3 Years</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-orange-400" />
-                  <span>Location: Available</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-orange-400" />
-                  <span>Projects: 50+</span>
-                </div>
-              </div>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+            <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-orange-500 shadow-lg mb-6 md:mb-0">
+              <img
+                src="https://avatars.githubusercontent.com/u/123114744?v=4" // <-- updated image
+                alt="Baghdad Mohamed"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-orange-500/20 to-blue-900/20 flex items-center justify-center">
-                <div className="w-72 h-72 rounded-full bg-gradient-to-br from-orange-500 to-blue-900 flex items-center justify-center text-6xl font-bold text-white shadow-2xl">
-                  BM
-                </div>
-              </div>
+            <div className="text-white/80 max-w-xl">
+              <ul className="space-y-4 text-left">
+                <li className="flex items-center gap-3">
+                  <User className="w-5 h-5 text-orange-400" />
+                  <span>Name: Baghdad Mohamed</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Briefcase className="w-5 h-5 text-orange-400" />
+                  <span>Role: Android Developer & Brand Designer</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 text-orange-400" />
+                  <span>Experience: 5+ years</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Star className="w-5 h-5 text-orange-400" />
+                  <span>Passion: Building apps & brands</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Skills Section */}
       <section id="skills" className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Skills & Expertise</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto"></div>
+            <h2 className="text-4xl font-bold text-white mb-4">My Skills</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto mb-8"></div>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              I combine technical expertise with creative vision to deliver outstanding results.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {skills.map((skill, index) => (
-              <div key={skill.name} className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-slate-800/70 transition-all duration-300 border border-gray-700/50">
-                <div className="flex items-center gap-3 mb-4">
-                  <skill.icon className="w-6 h-6 text-orange-400" />
-                  <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {skills.map((skill, idx) => (
+              <div key={idx} className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center shadow-lg border border-gray-700/50">
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br ${skill.color}`}>
+                  <skill.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="relative">
-                  <div className="w-full bg-gray-700 rounded-full h-3">
+                <h3 className="text-xl font-semibold text-white mb-2">{skill.name}</h3>
+                <div className="w-full relative">
+                  <div className="h-3 rounded-full bg-white/10 overflow-hidden">
                     <div
-                      className={`h-3 rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                      className={`h-3 rounded-full bg-gradient-to-r ${skill.color}`}
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>
@@ -329,7 +335,11 @@ const FreelancerPortfolio = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioItems.map((item) => (
-              <div key={item.id} className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-slate-800/70 transition-all duration-300 border border-gray-700/50">
+              <motion.div
+                key={item.id}
+                className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-slate-800/70 transition-all duration-300 border border-gray-700/50"
+                whileHover={{ scale: 1.04, boxShadow: "0 8px 32px rgba(255,140,0,0.15)" }}
+              >
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={item.image}
@@ -373,7 +383,7 @@ const FreelancerPortfolio = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -398,11 +408,11 @@ const FreelancerPortfolio = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <Mail className="w-5 h-5 text-orange-400" />
-                  <span className="text-white/80">baghdad.mohamed@email.com</span>
+                  <span className="text-white/80">baghdadmohamed.me@email.com</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="w-5 h-5 text-orange-400" />
-                  <span className="text-white/80">+1 (555) 123-4567</span>
+                  <span className="text-white/80">+212 623144441</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-orange-400" />
